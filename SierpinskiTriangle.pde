@@ -1,17 +1,20 @@
 public int threshold = 1;
 public int len = 100;
+public float h = 0;
 
 public void setup() {
 	size(640, 480);
 	colorMode(HSB);
 	background(0);
 	noStroke();
-	fill(255);
+	// fill(255);
 }
 
 public void draw() {
 	background(0);
+	
 	sierpinski(width/2 - len/2, height/2 + len/2, len);
+	h += 0.01;
 }
 
 //optional
@@ -22,11 +25,13 @@ public void mouseDragged() {
 
 public void sierpinski(int x, int y, int len) {
 	if (len <= threshold) {
+		fill(map(noise(h), 0, 1, 0, 255), 200, 200);
 		beginShape(TRIANGLES);
 		vertex(x, y);
 		vertex(x + len, y);
 		vertex(x + len/2, y - len);
 		endShape();
+		
 	} else {
 		sierpinski(x, y, len/2);
 		sierpinski(x + len/2, y, len/2);
