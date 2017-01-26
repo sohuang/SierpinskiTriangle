@@ -14,7 +14,7 @@ public void draw() {
 	background(0);
 	
 	sierpinski(width/2 - len/2, height/2 + len/2, len);
-	h += 0.01;
+	// h += 0.01;
 }
 
 //optional
@@ -31,6 +31,7 @@ public void sierpinski(int x, int y, int len) {
 		vertex(x + len, y);
 		vertex(x + len/2, y - len);
 		endShape();
+		h += 0.005;
 		
 	} else {
 		sierpinski(x, y, len/2);
