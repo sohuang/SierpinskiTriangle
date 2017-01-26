@@ -25,13 +25,15 @@ public void mouseDragged() {
 
 public void sierpinski(int x, int y, int len) {
 	if (len <= threshold) {
-		fill(map(noise(h), 0, 1, 0, 255), 200, 200);
+		float n = noise(h);
+		// seems to not have  much red
+		fill(map(n, 0.2, 1, 0, 255), 200, 200);
 		beginShape(TRIANGLES);
 		vertex(x, y);
 		vertex(x + len, y);
 		vertex(x + len/2, y - len);
 		endShape();
-		h += 0.005;
+		h += 0.05;
 		
 	} else {
 		sierpinski(x, y, len/2);
